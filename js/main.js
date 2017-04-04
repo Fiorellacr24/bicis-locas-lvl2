@@ -2,7 +2,7 @@ function insertTooltip(tooltipText, elementId){
 	var inputElement = document.getElementById(elementId);
 	var tooltip = document.createElement('span');
 	tooltip.innerHTML = tooltipText;
-	inputElement.parentNode.insertBefore(tooltip, inputElement.nextSibling);
+	inputElement.parentNode.appendChild(tooltip, inputElement.nextSibling);
 }
 
 function validateForm(){
@@ -18,10 +18,10 @@ function validateForm(){
 	letra =   /^[a-zA-Z]+(\s*[a-zA-Z]*)*[a-zA-Z]+$/;
 	mayusculas = /^([A-Z]{1}[a-zñáéíóú]+[\s]*)+$/;
 
-	if(nombre === ""){
-		// alert("Ingrese su nombre");
-		insertTooltip("Ingrese su nombre", "name")
+	if(nombre === ""){ 
+		insertTooltip("Ingrese su nombre", "name");
 		return false;
+		//tooltipText.style.display="none";
 	}else if(!letra.test(nombre)){
 		insertTooltip("Ingrese sólo letras", "name");
 		return false;
@@ -55,8 +55,8 @@ function validateForm(){
 	}else if(contraseña.length > 20){
 		insertTooltip("La contraseña debe tener máximo 20 carácteres", "input-password");
 		return false;
-	}else if(seleccionar == null || seleccionar == 0, "opciones"){
-		insertTooltip("Seleccione un tipo de bici");
+	}else if(seleccionar == null || seleccionar == 0){
+		insertTooltip("Seleccione un tipo de bici", "opciones");
 		return false;
 	}
 
@@ -66,4 +66,5 @@ function validateForm(){
 	document.getElementById("input-password").value="";
 	document.getElementById("input-social").value="";
 	document.getElementById("opciones").selectedIndex=0;
+
 }
